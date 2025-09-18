@@ -1,0 +1,12 @@
+package com.bootcamp.ntt.api_gateway.filter;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Config {
+  private String requiredRole;
+}
