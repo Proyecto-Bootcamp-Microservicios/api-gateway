@@ -15,10 +15,10 @@ import java.util.Date;
 @Slf4j
 public class JwtTokenUtil {
 
-  @Value("${JWT_SECRET}")
+  @Value("${JWT_SECRET:mySuperSecretKeyThatIsAtLeast512BitsLongForHS512AlgorithmAndMeetsSecurityRequirements123456789ABC}")
   private String secret;
 
-  @Value("${JWT_EXPIRATION}")
+  @Value("${JWT_EXPIRATION:864000000}")
   private Long expiration;
 
   private SecretKey getSigningKey() {

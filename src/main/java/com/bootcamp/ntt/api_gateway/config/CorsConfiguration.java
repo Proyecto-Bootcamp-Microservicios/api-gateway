@@ -75,7 +75,7 @@ public class CorsConfiguration {
       .cors(cors -> cors.configurationSource(corsConfigurationSource()))
       .authorizeExchange(exchanges -> exchanges
         .pathMatchers("/actuator/**", "/fallback/**").permitAll()
-        .anyExchange().permitAll()
+        .anyExchange().authenticated()
       )
       .build();
   }

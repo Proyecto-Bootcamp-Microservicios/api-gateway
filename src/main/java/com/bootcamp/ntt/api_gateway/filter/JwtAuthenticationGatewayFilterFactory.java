@@ -86,7 +86,7 @@ public class JwtAuthenticationGatewayFilterFactory extends AbstractGatewayFilter
         "  \"timestamp\": \"%s\",\n" +
         "  \"path\": \"%s\"\n" +
         "}",
-      OffsetDateTime.now().toString(),
+      OffsetDateTime.now(),
       exchange.getRequest().getPath().value()
     );
 
