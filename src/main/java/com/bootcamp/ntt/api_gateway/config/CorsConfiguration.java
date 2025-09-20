@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -74,8 +75,10 @@ public class CorsConfiguration {
       .csrf(csrf -> csrf.disable())
       .cors(cors -> cors.configurationSource(corsConfigurationSource()))
       .authorizeExchange(exchanges -> exchanges
+        .pathMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
+        .pathMatchers(HttpMethod.POST, "/api/v1/auth/register").permitAll()
         .pathMatchers("/actuator/**", "/fallback/**").permitAll()
-        .anyExchange().authenticated()
+        .anyExchange().permitAll()
       )
       .build();
   }
